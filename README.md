@@ -49,6 +49,8 @@ Cricket Score Service is a microservice application designed to manage and provi
 To run tests:
 ```bash
 mvn test
+```
+![image](https://github.com/user-attachments/assets/fcda3e32-18f4-454d-acd1-5f71c3e4d4f1)
 
 
 #Complete Application Microservice Boundaries

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.cricket.score"},{"l":"com.cricket.score.controller"},{"l":"com.cricket.score.exception"},{"l":"com.cricket.score.model"},{"l":"com.cricket.score.repository"},{"l":"com.cricket.score.service"}];updateSearchResults();

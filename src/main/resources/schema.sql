@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS SCORE (
+  matchId INT PRIMARY KEY,
+  teamA VARCHAR(255),
+  teamB VARCHAR(255),
+  score VARCHAR(255),
+  overs VARCHAR(50)
+);

@@ -1,0 +1,6 @@
+com.cricket.score
+com.cricket.score.controller
+com.cricket.score.exception
+com.cricket.score.model
+com.cricket.score.repository
+com.cricket.score.service

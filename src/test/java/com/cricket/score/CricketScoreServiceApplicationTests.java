@@ -20,54 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 public class CricketScoreServiceApplicationTests {
 
     @Autowired
-    private MockMvc mockMvc;
-
-    /**
-     * Tests fetching live score by valid match ID.
-     * 
-     * @throws Exception If the request fails.
-     */
-    @Test
-    @Order(3)
-    public void shouldReturnLiveScore() throws Exception {
-        // Precondition: Ensure there is a score with matchId 1 in your database or through a data.sql script
-        mockMvc.perform(get("/api/scores/1"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.teamA").value("India"))
-            .andExpect(jsonPath("$.teamB").value("Australia"))
-            .andDo(print());
-    }
-
-    /**
-     * Tests whether a 404 is returned for an invalid match ID.
-     * 
-     * @throws Exception If the request fails.
-     */
-    @Test
-    @Order(2)
-    public void shouldReturnNotFoundForInvalidMatchId() throws Exception {
-    	 String updatedScore = "{\"teamA\":\"India\",\"teamB\":\"Australia\",\"score\":\"300/6\",\"overs\":\"45.0\"}";
-
-         mockMvc.perform(put("/api/scores/999")
-                 .contentType(MediaType.APPLICATION_JSON)
-                 .content(updatedScore))
-             .andExpect(status().isNotFound())  // Expecting HTTP 404 Not Found
-             .andDo(print());
-    }
-
-    /**
-     * Tests fetching all live scores.
-     * 
-     * @throws Exception If the request fails.
-     */
-    @Test
-    @Order(6)
-    public void shouldReturnAllScores() throws Exception {
-        mockMvc.perform(get("/api/scores"))
-            .andExpect(status().isOk())          // Expecting HTTP 200 OK
-            .andExpect(jsonPath("$.length()").isNotEmpty())  // Ensure that scores list is not empty
-            .andDo(print());
-    }
+    private MockMvc mockMvc; 
 
     /**
      * Tests creating a new score.
@@ -92,6 +45,39 @@ public class CricketScoreServiceApplicationTests {
     }
 
     /**
+     * Tests whether a 404 is returned for an invalid match ID.
+     * 
+     * @throws Exception If the request fails.
+     */
+    @Test
+    @Order(2)
+    public void shouldReturnNotFoundForInvalidMatchId() throws Exception {
+    	 String updatedScore = "{\"teamA\":\"India\",\"teamB\":\"Australia\",\"score\":\"300/6\",\"overs\":\"45.0\"}";
+
+         mockMvc.perform(put("/api/scores/999")
+                 .contentType(MediaType.APPLICATION_JSON)
+                 .content(updatedScore))
+             .andExpect(status().isNotFound())  // Expecting HTTP 404 Not Found
+             .andDo(print());
+    }
+
+    /**
+     * Tests fetching live score by valid match ID.
+     * 
+     * @throws Exception If the request fails.
+     */
+    @Test
+    @Order(3)
+    public void shouldReturnLiveScore() throws Exception {
+        // Precondition: Ensure there is a score with matchId 1 in your database or through a data.sql script
+        mockMvc.perform(get("/api/scores/1"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.teamA").value("India"))
+            .andExpect(jsonPath("$.teamB").value("Australia"))
+            .andDo(print());
+    }
+    
+     /**
      * Tests updating an existing score by match ID.
      * 
      * @throws Exception If the request fails.
@@ -112,7 +98,7 @@ public class CricketScoreServiceApplicationTests {
             .andDo(print());
     }
 
-    /**
+     /**
      * Tests deleting an existing score by match ID.
      * 
      * @throws Exception If the request fails.
@@ -125,4 +111,18 @@ public class CricketScoreServiceApplicationTests {
             .andExpect(status().isNoContent())  // Expecting HTTP 204 No Content after successful deletion
             .andDo(print());
     }
+
+    /**
+     * Tests fetching all live scores.
+     * 
+     * @throws Exception If the request fails.
+     */
+    @Test
+    @Order(6)
+    public void shouldReturnAllScores() throws Exception {
+        mockMvc.perform(get("/api/scores"))
+            .andExpect(status().isOk())          // Expecting HTTP 200 OK
+            .andExpect(jsonPath("$.length()").isNotEmpty())  // Ensure that scores list is not empty
+            .andDo(print());
+    } 
 }

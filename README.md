@@ -44,12 +44,10 @@ Cricket Score Service is a microservice application designed to manage and provi
 5. Access the application:
    - Swagger UI: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
    - H2 Console: [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+   - Spring Boot Actuator: [http://localhost:8080/actuator](http://localhost:8080/actuator)
 
-### Running Tests
-To run tests:
+### Application Detail
 ```bash
-mvn test
-
 
 #Complete Application Microservice Boundaries
 Here are five microservices for this Application:

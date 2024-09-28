@@ -16,6 +16,7 @@ Cricket Score Service is a microservice application designed to manage and provi
 - H2 In-memory Database
 - Swagger 2
 - JUnit 5 for Testing
+- Spring Boot Actuator
 
 ## Setup Instructions
 

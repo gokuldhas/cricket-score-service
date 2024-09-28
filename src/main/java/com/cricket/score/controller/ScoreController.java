@@ -7,9 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.cricket.score.model.Score;
 import com.cricket.score.service.ScoreService;
-
 import io.swagger.v3.oas.annotations.Operation;
-
 import com.cricket.score.exception.MatchNotFoundException;
 
 /**
@@ -17,6 +15,7 @@ import com.cricket.score.exception.MatchNotFoundException;
  */
 @RestController
 @RequestMapping("/api/scores")
+@CrossOrigin(origins = "http://localhost:8080")  // Allow CORS for this controller
 public class ScoreController {
 
     @Autowired
@@ -67,8 +66,16 @@ public class ScoreController {
     @Operation(summary = "Update score by match ID", description = "Update the score of a match by its ID")
     @PutMapping("/{matchId}")
     public ResponseEntity<Score> updateScore(@PathVariable Long matchId, @RequestBody Score scoreDetails) {
-        return ResponseEntity.ok(scoreService.updateScore(matchId, scoreDetails));
+        try {
+            Score updatedScore = scoreService.updateScore(matchId, scoreDetails);
+            return ResponseEntity.ok(updatedScore);
+        } catch (MatchNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);  // Return 404 if the match is not found
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);  // General error handling
+        }
     }
+
 
     /**
      * Deletes a score by match ID.

@@ -46,28 +46,33 @@ Cricket Score Service is a microservice application designed to manage and provi
    - H2 Console: [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
    - Spring Boot Actuator: [http://localhost:8080/actuator](http://localhost:8080/actuator)
 
-### Application Detail
+### Running Tests
+To run tests:
 ```bash
+* Right-click test case > Run As > JUnit Test
+```
+![image](https://github.com/user-attachments/assets/fcda3e32-18f4-454d-acd1-5f71c3e4d4f1)
 
-#Complete Application Microservice Boundaries
-Here are five microservices for this Application:
 
-#*Score Service(This Service):
+# Complete Application Microservice Boundaries
+Here are five microservices for complete Application:
+
+## *Score Service(This Service):
 Responsible for fetching, storing, and updating live cricket scores from various matches.
 This will have endpoints to provide real-time score updates and historical score data.
 
-#Player Stats Service:
+## Player Stats Service:
 Responsible for retrieving player statistics (batting average, bowling figures, etc.).
 This microservice will include endpoints to fetch individual and team player data.
 
-#Match Info Service:
+## Match Info Service:
 Provides information on upcoming and ongoing matches (schedule, venues, teams, etc.).
 Endpoints will handle data related to match schedules, venues, teams, and their lineups.
 
-#News and Articles Service:
+## News and Articles Service:
 Manages articles, news updates, and commentary on matches.
 CRUD operations on articles and commentaries related to cricket news.
 
-#User Profile Service:
+## User Profile Service:
 Handles user accounts, preferences, and personalization (favorite teams, match alerts).
 This service will offer user authentication, user preferences, and subscriptions
